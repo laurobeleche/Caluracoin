@@ -1,0 +1,9 @@
+Building CaluraCoin
+
+See doc/readme-qt.rst for instructions on building CaluraCoin QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of CaluraCoin.
+
+See doc/build-*.txt for instructions on building caluracoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of CaluraCoin.

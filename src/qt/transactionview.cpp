@@ -100,7 +100,6 @@ TransactionView::TransactionView(QWidget *parent) :
     amountWidget->setFixedWidth(100);
 #endif
     amountWidget->setValidator(new QDoubleValidator(0, 1e20, 8, this));
-    amountWidget->setStyleSheet("background-color: #555555; color: white;");
     hlayout->addWidget(amountWidget);
 
     QVBoxLayout *vlayout = new QVBoxLayout(this);
@@ -120,20 +119,12 @@ TransactionView::TransactionView(QWidget *parent) :
 #else
     hlayout->addSpacing(width);
 #endif
-    QPalette pal = palette();
-    pal.setColor(QPalette::AlternateBase, QColor(255, 255, 255, 50));
-    pal.setColor(QPalette::Base, QColor(200, 0, 0, 125));
-    pal.setColor(QPalette::Text, QColor(255, 255, 255, 255));
-    pal.setColor(QPalette::WindowText, QColor(255, 255, 255));
-    //view->setStyleSheet(" alternate-color: white; color: white;QHeaderView {color: white; background-color: #222222;}");
     // Always show scroll bar
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     view->setTabKeyNavigation(false);
     view->setContextMenuPolicy(Qt::CustomContextMenu);
-    //view->setPalette(pal);
 
     transactionView = view;
-    transactionView->setStyleSheet("QTableView {color: white; background-color: rgba(0, 0, 0, 50); font-weight: bold; alternate-background-color: rgba(255, 255, 255, 50);} QHeaderView {color: black;}");
     // Actions
     QAction *copyAddressAction = new QAction(tr("Copy address"), this);
     QAction *copyLabelAction = new QAction(tr("Copy label"), this);

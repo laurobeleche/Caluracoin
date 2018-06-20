@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string>Transaction details</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">color: white; background: transparent;</string>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTextEdit" name="detailText">

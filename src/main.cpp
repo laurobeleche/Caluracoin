@@ -1237,8 +1237,8 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
     bnTarget.SetCompact(nBits);
 
     // Check range
-    if (bnTarget <= 0 || bnTarget > bnProofOfWorkLimit)
-        return error("CheckProofOfWork() : nBits below minimum work");
+    //if (bnTarget <= 0 || bnTarget > bnProofOfWorkLimit)
+      //  return error("CheckProofOfWork() : nBits below minimum work");
 
     // Check proof of work matches claimed amount
     if (hash > bnTarget.getuint256())
@@ -2959,6 +2959,14 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         uint64_t nNonce = 1;
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
         if (pfrom->nVersion < MIN_PEER_PROTO_VERSION)
+        {
+            // disconnect from peers older than this proto version
+            printf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->nVersion);
+            pfrom->fDisconnect = true;
+            return false;
+        }
+		
+		if (pfrom->nVersion < 60024)
         {
             // disconnect from peers older than this proto version
             printf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->nVersion);

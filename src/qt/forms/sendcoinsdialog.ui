@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string>Send Coins</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QToolTip {color: white; border: 1px solid white; background-color: blue;}</string>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0">
    <property name="bottomMargin">
     <number>8</number>
@@ -34,9 +31,6 @@
        <height>16777215</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">background: rgba(0, 0, 0, 150);</string>
-     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -45,7 +39,7 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayoutCoinControl2">
       <property name="spacing">
-       <number>7</number>
+       <number>-1</number>
       </property>
       <property name="leftMargin">
        <number>0</number>
@@ -90,7 +84,7 @@
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">font-weight:bold; color: white;</string>
+             <string notr="true">font-weight:bold;</string>
             </property>
             <property name="text">
              <string>Coin Control Features</string>
@@ -110,8 +104,7 @@
           <item>
            <widget class="QPushButton" name="pushButtonCoinControl">
             <property name="styleSheet">
-             <string notr="true">color: white;background-color: #444444; border: 2px solid #333333; padding: 5px 15px 5px 15px;
-</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Inputs...</string>
@@ -120,9 +113,6 @@
           </item>
           <item>
            <widget class="QLabel" name="labelCoinControlAutomaticallySelected">
-            <property name="styleSheet">
-             <string notr="true">color: white;</string>
-            </property>
             <property name="text">
              <string>automatically selected</string>
             </property>
@@ -183,16 +173,7 @@
            <string notr="true"/>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayoutCoinControl5">
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
+           <property name="margin">
             <number>0</number>
            </property>
            <item>
@@ -226,7 +207,7 @@
                <item row="0" column="0">
                 <widget class="QLabel" name="labelCoinControlQuantityText">
                  <property name="styleSheet">
-                  <string notr="true">font-weight:bold; color: white;</string>
+                  <string notr="true">font-weight:bold;</string>
                  </property>
                  <property name="text">
                   <string>Quantity:</string>
@@ -250,9 +231,6 @@
                  <property name="contextMenuPolicy">
                   <enum>Qt::ActionsContextMenu</enum>
                  </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: white;</string>
-                 </property>
                  <property name="text">
                   <string>0</string>
                  </property>
@@ -267,7 +245,7 @@
                <item row="1" column="0">
                 <widget class="QLabel" name="labelCoinControlBytesText">
                  <property name="styleSheet">
-                  <string notr="true">font-weight:bold; color: white;</string>
+                  <string notr="true">font-weight:bold;</string>
                  </property>
                  <property name="text">
                   <string>Bytes:</string>
@@ -287,9 +265,6 @@
                  </property>
                  <property name="contextMenuPolicy">
                   <enum>Qt::ActionsContextMenu</enum>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: white;</string>
                  </property>
                  <property name="text">
                   <string>0</string>
@@ -321,7 +296,7 @@
                <item row="0" column="0">
                 <widget class="QLabel" name="labelCoinControlAmountText">
                  <property name="styleSheet">
-                  <string notr="true">color: white;font-weight:bold;</string>
+                  <string notr="true">font-weight:bold;</string>
                  </property>
                  <property name="text">
                   <string>Amount:</string>
@@ -345,11 +320,8 @@
                  <property name="contextMenuPolicy">
                   <enum>Qt::ActionsContextMenu</enum>
                  </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: white;</string>
-                 </property>
                  <property name="text">
-                  <string>0.00 CALURACOIN</string>
+                  <string>0.00 TIGC</string>
                  </property>
                  <property name="textInteractionFlags">
                   <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -359,7 +331,7 @@
                <item row="1" column="0">
                 <widget class="QLabel" name="labelCoinControlPriorityText">
                  <property name="styleSheet">
-                  <string notr="true">color: white;font-weight:bold;</string>
+                  <string notr="true">font-weight:bold;</string>
                  </property>
                  <property name="text">
                   <string>Priority:</string>
@@ -379,9 +351,6 @@
                  </property>
                  <property name="contextMenuPolicy">
                   <enum>Qt::ActionsContextMenu</enum>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: white;</string>
                  </property>
                  <property name="text">
                   <string>medium</string>
@@ -413,7 +382,7 @@
                <item row="0" column="0">
                 <widget class="QLabel" name="labelCoinControlFeeText">
                  <property name="styleSheet">
-                  <string notr="true">color: white;font-weight:bold;</string>
+                  <string notr="true">font-weight:bold;</string>
                  </property>
                  <property name="text">
                   <string>Fee:</string>
@@ -437,11 +406,8 @@
                  <property name="contextMenuPolicy">
                   <enum>Qt::ActionsContextMenu</enum>
                  </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: white;</string>
-                 </property>
                  <property name="text">
-                  <string>0.00 CALURACOIN</string>
+                  <string>0.00 TIGC</string>
                  </property>
                  <property name="textInteractionFlags">
                   <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -451,7 +417,7 @@
                <item row="1" column="0">
                 <widget class="QLabel" name="labelCoinControlLowOutputText">
                  <property name="styleSheet">
-                  <string notr="true">color: white;font-weight:bold;</string>
+                  <string notr="true">font-weight:bold;</string>
                  </property>
                  <property name="text">
                   <string>Low Output:</string>
@@ -471,9 +437,6 @@
                  </property>
                  <property name="contextMenuPolicy">
                   <enum>Qt::ActionsContextMenu</enum>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: white;</string>
                  </property>
                  <property name="text">
                   <string>no</string>
@@ -505,7 +468,7 @@
                <item row="0" column="0">
                 <widget class="QLabel" name="labelCoinControlAfterFeeText">
                  <property name="styleSheet">
-                  <string notr="true">color: white;font-weight:bold;</string>
+                  <string notr="true">font-weight:bold;</string>
                  </property>
                  <property name="text">
                   <string>After Fee:</string>
@@ -529,11 +492,8 @@
                  <property name="contextMenuPolicy">
                   <enum>Qt::ActionsContextMenu</enum>
                  </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: white;</string>
-                 </property>
                  <property name="text">
-                  <string>0.00 CALURACOIN</string>
+                  <string>0.00 TIGC</string>
                  </property>
                  <property name="textInteractionFlags">
                   <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -543,7 +503,7 @@
                <item row="1" column="0">
                 <widget class="QLabel" name="labelCoinControlChangeText">
                  <property name="styleSheet">
-                  <string notr="true">color: white;font-weight:bold;</string>
+                  <string notr="true">font-weight:bold;</string>
                  </property>
                  <property name="text">
                   <string>Change</string>
@@ -564,11 +524,8 @@
                  <property name="contextMenuPolicy">
                   <enum>Qt::ActionsContextMenu</enum>
                  </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: white;</string>
-                 </property>
                  <property name="text">
-                  <string>0.00 CALURACOIN</string>
+                  <string>0.00 TIGC</string>
                  </property>
                  <property name="textInteractionFlags">
                   <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -598,9 +555,6 @@
           </property>
           <item>
            <widget class="QCheckBox" name="checkBoxCoinControlChange">
-            <property name="styleSheet">
-             <string notr="true">color: white;</string>
-            </property>
             <property name="text">
              <string>custom change address</string>
             </property>
@@ -616,9 +570,6 @@
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: white;</string>
             </property>
            </widget>
           </item>
@@ -666,9 +617,6 @@
    </item>
    <item>
     <widget class="QScrollArea" name="scrollArea">
-     <property name="styleSheet">
-      <string notr="true">background: rgba(0, 0, 0, 50)</string>
-     </property>
      <property name="widgetResizable">
       <bool>true</bool>
      </property>
@@ -677,21 +625,12 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>826</width>
-        <height>136</height>
+        <width>830</width>
+        <height>165</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
@@ -725,10 +664,6 @@
        <property name="toolTip">
         <string>Send to multiple recipients at once</string>
        </property>
-       <property name="styleSheet">
-        <string notr="true">color: white;background-color: #444444; border: 2px solid #333333; padding: 5px;
-</string>
-       </property>
        <property name="text">
         <string>Add &amp;Recipient</string>
        </property>
@@ -751,10 +686,6 @@
        </property>
        <property name="toolTip">
         <string>Remove all transaction fields</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: white;background-color: #444444; border: 2px solid #333333; padding: 5px;
-</string>
        </property>
        <property name="text">
         <string>Clear &amp;All</string>
@@ -784,9 +715,6 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="styleSheet">
-          <string notr="true">color: white;</string>
-         </property>
          <property name="text">
           <string>Balance:</string>
          </property>
@@ -803,11 +731,8 @@
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
-         <property name="styleSheet">
-          <string notr="true">color: white;</string>
-         </property>
          <property name="text">
-          <string>123.456 CALURACOIN</string>
+          <string>123.456 TIGC</string>
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -839,10 +764,6 @@
        </property>
        <property name="toolTip">
         <string>Confirm the send action</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: white;background-color: #444444; border: 2px solid #333333; padding: 5px;
-</string>
        </property>
        <property name="text">
         <string>S&amp;end</string>

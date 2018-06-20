@@ -173,15 +173,15 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     {
         progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 7px; margin: 0px; }");
     }
-	//qApp->setStyleSheet("QMainWindow {background-color: black;    width: 10px; /* when vertical */    height: 10px; /* when horizontal */}");
-    qApp->setStyleSheet("QMainWindow {border-image: url(:/images/bkg); color: black;} QToolTip{color: white; border: 1px solid white; background-color: black;}");
+	QFile File(":/css/css");
+    File.open(QFile::ReadOnly);
+    QString StyleSheet = QLatin1String(File.readAll());
 
-	//qApp->setStyleSheet("QToolBar {color: #ffffff;}");
+    qApp->setStyleSheet(StyleSheet);
 
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
-    statusBar()->setStyleSheet("color: white; QToolTip{color: white; border: 1px solid white; background-color: black;}");
 
     syncIconMovie = new QMovie(":/movies/update_spinner", "mng", this);
 
@@ -344,9 +344,6 @@ void BitcoinGUI::createMenuBar()
 
 void BitcoinGUI::createToolBars()
 {
-    QPalette pal = palette();
-    pal.setColor(QPalette::ToolTipBase, QColor(127, 112, 25, 50));
-    pal.setColor(QPalette::ToolTipText, QColor(0, 0, 0, 255));
 
     QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -355,17 +352,11 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(receiveCoinsAction);
     toolbar->addAction(historyAction);
     toolbar->addAction(addressBookAction);
-	
-    //toolbar->menuButon("color: white;");
 
-    toolbar->setStyleSheet("QToolBar {color: white; background-color: rgba(0, 50, 0, 0.8);} QToolButton{color: white;} QToolButton:hover{background-color: rgba(0, 255, 0, 0.1); border: 1px solid rgba(20, 255, 20, 0.3);}QToolButton:pressed{background-color: rgba(0, 255, 0, 0.3);}");
-    toolbar->setPalette(pal);
 
     QToolBar *toolbar2 = addToolBar(tr("Actions toolbar"));
     toolbar2->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     toolbar2->addAction(exportAction);
-    toolbar2->setStyleSheet("QToolBar {color: white; background-color: rgba(0, 50, 0, 0.8);} QToolButton{color: white;}");
-    toolbar2->setPalette(pal);
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)

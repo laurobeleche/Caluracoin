@@ -49,6 +49,9 @@
         <file alias="splash">res/images/splash3.png</file>
 		<file alias="bkg">res/images/bkg03.png</file>
     </qresource>
+	<qresource prefix="/css">
+        <file alias="css">res/css/css.css</file>
+    </qresource>
     <qresource prefix="/movies">
         <file alias="update_spinner">res/movies/update_spinner.mng</file>
     </qresource>

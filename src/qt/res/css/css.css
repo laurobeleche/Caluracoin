@@ -11,15 +11,60 @@ border: 1px solid white;
 background-color: black;
 }
 
+QDialog {
+background-color: #112611;
+}
+
+QMessageBox {
+	border-image: url(:/images/bkg);
+}
+
+QDialog#AskPassphraseDialog {
+border-image: url(:/images/bkg);
+}
+
+QDialog#OptionsDialog {
+border-image: url(:/images/bkg);
+}
+
+QDialog#RPCConsole {
+border-image: url(:/images/bkg);
+}
+QMenuBar {
+	background-color: #111;
+	color: #fff;
+}
+QMenuBar::item {
+	background-color: #151515;
+	color: #fff;
+}
+QMenuBar::item:selected {
+	background-color: #222;
+	color: #fff;
+}
+QMenu {
+	background-color: #111;
+	color: #fff;
+}
+QMenu::item {
+	color: #fff
+}
+QMenu::item:selected {
+	background-color: #242424;
+	color: #fff
+}
+QDialog#SignVerifyMessageDialog {
+border-image: url(:/images/bkg);
+}
+
 QDialog#AboutDialog {
 border-image: url(:/images/bkg);
 }
-QDialog {
-border-image: url(:/images/bkg);
-}
+
 QDialog#AboutQtDialog {
 border-image: url(:/images/bkg);
 }
+
 QDialog#AboutDialog .QLabel{
 color: white;
 }
@@ -38,8 +83,27 @@ QDialog#AskPassphraseDialog .QLabel{
 QDialog#EditAddressDialog .QLabel {
 	color: white;
 }
-QDialog#signVerifyMessageDialog .QLabel {
+QDialog#CoinControlDialog {
+	border-image: url(:/images/bkg);
+}
+QDialog#CoinControlDialog .QLabel {
 	color: white;
+}
+QDialog#CoinControlDialog .QFrame#frame .QRadioButton#radioTreeMode { /* Coin Control Tree Mode Selector */
+color: black;
+}
+
+QDialog#CoinControlDialog .QFrame#frame .QRadioButton#radioListMode { /* Coin Control List Mode Selector */
+color: black;
+}
+QDialog#SignVerifyMessageDialog QWidget#tabWidget QLabel#infoLabel_SM {
+	color: black;
+}
+QDialog#SignVerifyMessageDialog QWidget#tabVerifyMessage QLabel#infoLabel_VM{
+	color: black;
+}
+QDialog#SignVerifyMessageDialog QWidget#tabWidget{
+	background: transparent;
 }
 QDialog#AskPassphraseDialog QLabel#passLabel1, QDialog#AskPassphraseDialog QLabel#passLabel2, QDialog#AskPassphraseDialog QLabel#passLabel3 {
 color: white;
@@ -47,8 +111,19 @@ color: white;
 QDialog#AskPassphraseDialog QCheckBox {
 	color: white;
 }
+QDialog#EditAddressDialog {
+	
+}
 QDialog#SendCoinsDialog {
-background-color:transparent;
+background:rgba(0,25,0,0);
+}
+
+QWidget#AddressBookPage {
+	background:transparent;
+}
+
+QDialog#SendCoinsDialog .QFrame#frameCoinControl{
+background:transparent;
 }
 QDialog#MasternodeManager .QTabWidget#tabWidget .QWidget#tab {
 background-color:transparent;
@@ -106,8 +181,8 @@ border:0;
 }
 
 .QTableView { /* Table - has to be selected as a class otherwise it throws off QCalendarWidget */
-background:transparent;
-alternate-background-color:rgba(255,255,255,100);
+background:rgba(0,25,0,0);
+alternate-background-color:rgba(15,45,15,40);
 alternate-color:#ffffff;
 border:1px solid #747f8d;
 color:#ffffff;

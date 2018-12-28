@@ -10,9 +10,6 @@ BlockTime: 1 min
 Min StakeAge: 3h
 Max StakeAge: 00
 
-Seed nodes:
-185.223.30.226
-
 POS
 BLOCK / REWARD
 1-25000 / 20
@@ -24,3 +21,73 @@ BLOCK / REWARD
 500001-1000000 / 8
 1000001-10000000 / 6
 10000001-CAP SUPPLY / 4
+
+Seed nodes:
+addnode=185.223.30.226
+addnode=207.148.11.38
+addnode=178.128.69.71
+addnode=151.227.181.42
+addnode=192.95.33.131
+addnode=144.217.97.217
+addnode=71.55.241.209
+addnode=98.214.20.153
+addnode=188.42.33.124
+addnode=14.174.218.45
+addnode=108.53.189.78
+addnode=220.17.135.20
+addnode=134.249.150.208
+addnode=185.223.28.19
+addnode=178.17.21.201
+addnode=173.212.193.157
+addnode=207.148.11.38
+addnode=144.217.118.214
+addnode=87.76.12.33
+addnode=77.121.103.110
+addnode=67.169.210.168
+addnode=201.140.131.50
+addnode=80.211.1.45
+addnode=170.247.41.233
+addnode=79.111.14.79
+addnode=186.241.31.193
+addnode=69.167.149.148
+addnode=82.193.139.250
+addnode=176.108.43.113
+addnode=124.122.15.150
+addnode=124.59.73.108
+addnode=46.203.205.58
+addnode=191.33.74.202
+addnode=189.83.88.251
+addnode=188.42.33.124:61936
+addnode=207.148.11.38:40354
+addnode=50.225.198.67:33955
+addnode=176.251.174.104:58747
+addnode=[2607:5300:60:3083::]:37667
+addnode=87.76.12.33:65108
+addnode=201.140.131.50:31577
+addnode=[2404:9400:10fc:a013::2b]:37667
+addnode=178.251.141.91:54618
+addnode=203.111.176.3:49760
+addnode=14.243.2.91:64791
+addnode=192.95.33.131:37667
+addnode=95.216.77.8:33456
+addnode=94.226.143.32:57068
+addnode=82.193.139.250:52396
+addnode=170.246.70.52:62040
+addnode=13.82.135.80:64264
+addnode=188.42.33.124
+addnode=207.148.11.38
+addnode=50.225.198.67
+addnode=176.251.174.104
+addnode=[2607:5300:60:3083::]
+addnode=87.76.12.33
+addnode=201.140.131.50
+addnode=[2404:9400:10fc:a013::2b]
+addnode=178.251.141.91
+addnode=203.111.176.3
+addnode=14.243.2.91
+addnode=192.95.33.131
+addnode=95.216.77.8
+addnode=94.226.143.32
+addnode=82.193.139.250
+addnode=170.246.70.52
+addnode=13.82.135.80

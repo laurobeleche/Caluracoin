@@ -41,7 +41,8 @@ CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
 
 unsigned int nTargetSpacing = 1 * 60; // 1 minute
-unsigned int nTargetSpacing_v2 = 1 * 60; // 2 minute
+unsigned int nTargetSpacing_v2 = 1 * 60; // 1 minute
+unsigned int nTargetSpacing_v3 = 3 * 60; // 3 minute
 unsigned int nStakeMinAge = 3 * 60 * 60;
 unsigned int nStakeMaxAge = -1; // unlimited
 unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
@@ -1071,25 +1072,31 @@ int64_t GetProofOfStakeReward(int nHeight, int64_t nCoinAge, int64_t nFees)
 			 {
 				 nSubsidy = 8 * COIN;
 			 }
-			 	else if(nBestHeight <= 10000000)
+			 	else if(nBestHeight <= 1250000)
 			 {
 				 nSubsidy = 6 * COIN;
+			 }	
+				else if(nBestHeight <= 1500000)
+			 {
+				 nSubsidy = 18 * COIN;
+			 }
+				else if(nBestHeight <= 1750000)
+			 {
+				 nSubsidy = 16 * COIN;
+			 }
+				else if(nBestHeight <= 2000000)
+			 {
+				 nSubsidy = 14 * COIN;
 			 }
 			 else
 			{
-			 nSubsidy = 4 * COIN;
+			 nSubsidy = 12 * COIN;
 			}
-			int v1 = rand() % 1000;
-			if(v1 <= 10){
-				nSubsidy = nSubsidy * 2;
-			}
-			else if(v1 == 7777){
-				nSubsidy = nSubsidy * 10;
-			}
+
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
 
-    return nSubsidy + nFees;
+    return nSubsidy;
 }
 
 static const int64_t nTargetTimespan_v1 = 16 * 60;  // 16 mins
@@ -1183,6 +1190,11 @@ static unsigned int GetNextTargetRequiredV2(const CBlockIndex* pindexLast, bool 
     {
         nTargetSpacing = nTargetSpacing;
     }
+	
+	if (pindexBest->nHeight+1 >= 1250000)
+    {
+        nTargetSpacing = nTargetSpacing_v3;
+    }
 
     if (pindexBest->nHeight+1 >= 40000)
     {
@@ -1238,11 +1250,11 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
 
     // Check range
     //if (bnTarget <= 0 || bnTarget > bnProofOfWorkLimit)
-      //  return error("CheckProofOfWork() : nBits below minimum work");
+		//return error("CheckProofOfWork() : nBits below minimum work");
 
     // Check proof of work matches claimed amount
     if (hash > bnTarget.getuint256())
-        return error("CheckProofOfWork() : hash doesn't match nBits");
+       return error("CheckProofOfWork() : hash doesn't match nBits");
 
     return true;
 }
@@ -2609,19 +2621,19 @@ bool LoadBlockIndex(bool fAllowNew)
             return false;
 
         // Genesis block
-//block.GetHash() == 00000a20ce1d27f2770c5558418ae4481a9ad27ec63700bcab6ddf75e4a44f75
-//block.hashMerkleRoot == 14b7e4956eb2e03ae88e45df46d31e4c356e4176bf20b8dcf7e3ce81c3663d15
-//block.nTime = 1529196360 
-//block.nNonce = 1496550 
+		//block.GetHash() == 00000a20ce1d27f2770c5558418ae4481a9ad27ec63700bcab6ddf75e4a44f75
+		//block.hashMerkleRoot == 14b7e4956eb2e03ae88e45df46d31e4c356e4176bf20b8dcf7e3ce81c3663d15
+		//block.nTime = 1529196360 
+		//block.nNonce = 1496550 
 
-//block.GetHash() == 00000a20ce1d27f2770c5558418ae4481a9ad27ec63700bcab6ddf75e4a44f75
-//block.hashMerkleRoot == 14b7e4956eb2e03ae88e45df46d31e4c356e4176bf20b8dcf7e3ce81c3663d15
-//block.nTime = 1529196360 
-//block.nNonce = 1496550 
-//block.GetHash() == 0000004ad90ae3752c2b5873356242b3f88250d25216b6f344b827dbb50aa8fc
-//block.hashMerkleRoot == cdf6d248bf20a3764225e74d5039a8f3169104540ed6fc466ea8fc64b016cbf6
-//block.nTime = 1529210337 
-//block.nNonce = 870327 
+		//block.GetHash() == 00000a20ce1d27f2770c5558418ae4481a9ad27ec63700bcab6ddf75e4a44f75
+		//block.hashMerkleRoot == 14b7e4956eb2e03ae88e45df46d31e4c356e4176bf20b8dcf7e3ce81c3663d15
+		//block.nTime = 1529196360 
+		//block.nNonce = 1496550 
+		//block.GetHash() == 0000004ad90ae3752c2b5873356242b3f88250d25216b6f344b827dbb50aa8fc
+		//block.hashMerkleRoot == cdf6d248bf20a3764225e74d5039a8f3169104540ed6fc466ea8fc64b016cbf6
+		//block.nTime = 1529210337 
+		//block.nNonce = 870327 
 
         const char* pszTimestamp = "Sunday, Jun 17, 2018 04:38:57 AM";
         CTransaction txNew;
@@ -3189,7 +3201,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
                 printf("  got inventory: %s  %s\n", inv.ToString().c_str(), fAlreadyHave ? "have" : "new");
 
             if (!fAlreadyHave)
-                pfrom->AskFor(inv);
+                pfrom->AskFor(inv, IsInitialBlockDownload()); // peershares: immediate retry during initial download
             else if (inv.type == MSG_BLOCK && mapOrphanBlocks.count(inv.hash)) {
                 pfrom->PushGetBlocks(pindexBest, GetOrphanRoot(mapOrphanBlocks[inv.hash]));
             } else if (nInv == nLastBlock) {
@@ -3244,7 +3256,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
                         // download node to accept as orphan (proof-of-stake
                         // block might be rejected by stake connection check)
                         vector<CInv> vInv;
-                        vInv.push_back(CInv(MSG_BLOCK, GetLastBlockIndex(pindexBest, false)->GetBlockHash()));
+                        vInv.push_back(CInv(MSG_BLOCK, hashBestChain));
                         pfrom->PushMessage("inv", vInv);
                         pfrom->hashContinue = 0;
                     }

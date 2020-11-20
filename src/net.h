@@ -371,7 +371,7 @@ public:
         }
     }
 
-    void AskFor(const CInv& inv, bool fImmediateRetry = false)
+    void AskFor(const CInv& inv)
     {
         // We're using mapAskFor as a priority queue,
         // the key is the earliest time the request can be sent
@@ -387,10 +387,7 @@ public:
         nLastTime = nNow;
 
         // Each retry is 2 minutes after the last
-        if (fImmediateRetry)
-            nRequestTime = nNow;
-        else
-            nRequestTime = std::max(nRequestTime + 2 * 60 * 1000000, nNow);
+        nRequestTime = std::max(nRequestTime + 2 * 60 * 1000000, nNow);
         mapAskFor.insert(std::make_pair(nRequestTime, inv));
     }
 

@@ -863,9 +863,7 @@ struct tallyitem
 {
     int64_t nAmount;
     int nConf;
-    //listreceivedbyaddress exibindo as TxIds
-    vector<uint256> txids;
-    //listreceivedbyaddress exibindo as TxIds
+
     tallyitem()
     {
         nAmount = 0;
@@ -907,9 +905,7 @@ Value ListReceived(const Array& params, bool fByAccounts)
             tallyitem& item = mapTally[address];
             item.nAmount += txout.nValue;
             item.nConf = min(item.nConf, nDepth);
-            //listreceivedbyaddress exibindo as TxIds
-            item.txids.push_back(wtx.GetHash());
-            //listreceivedbyaddress exibindo as TxIds
+
         }
     }
 
@@ -945,14 +941,7 @@ Value ListReceived(const Array& params, bool fByAccounts)
             obj.push_back(Pair("account",       strAccount));
             obj.push_back(Pair("amount",        ValueFromAmount(nAmount)));
             obj.push_back(Pair("confirmations", (nConf == std::numeric_limits<int>::max() ? 0 : nConf)));
-            //listreceivedbyaddress exibindo as TxIds
-            Array transactions;
-            BOOST_FOREACH(const uint256& item, (*it).second.txids)
-            {
-                transactions.push_back(item.GetHex());
-            }
-            obj.push_back(Pair("txids", transactions));
-            //listreceivedbyaddress exibindo as TxIds
+
             ret.push_back(obj);
         }
     }
@@ -1720,16 +1709,14 @@ Value checkwallet(const Array& params, bool fHelp)
 
     int nMismatchSpent;
     int64_t nBalanceInQuestion;
-    int nOrphansFound;
-    pwalletMain->FixSpentCoins(nMismatchSpent, nBalanceInQuestion, nOrphansFound, true);
+    pwalletMain->FixSpentCoins(nMismatchSpent, nBalanceInQuestion, true);
     Object result;
-    if (nMismatchSpent == 0 && nOrphansFound == 0)
+    if (nMismatchSpent == 0)
         result.push_back(Pair("wallet check passed", true));
     else
     {
         result.push_back(Pair("mismatched spent coins", nMismatchSpent));
         result.push_back(Pair("amount in question", ValueFromAmount(nBalanceInQuestion)));
-        result.push_back(Pair("orphan blocks found", nOrphansFound));
     }
     return result;
 }
@@ -1745,16 +1732,14 @@ Value repairwallet(const Array& params, bool fHelp)
 
     int nMismatchSpent;
     int64_t nBalanceInQuestion;
-    int nOrphansFound;
-    pwalletMain->FixSpentCoins(nMismatchSpent, nBalanceInQuestion,nOrphansFound);
+    pwalletMain->FixSpentCoins(nMismatchSpent, nBalanceInQuestion);
     Object result;
-    if (nMismatchSpent == 0 && nOrphansFound == 0)
+    if (nMismatchSpent == 0)
         result.push_back(Pair("wallet check passed", true));
     else
     {
         result.push_back(Pair("mismatched spent coins", nMismatchSpent));
         result.push_back(Pair("amount affected by repair", ValueFromAmount(nBalanceInQuestion)));
-        result.push_back(Pair("orphan blocks removed", nOrphansFound));
     }
     return result;
 }
